@@ -1,0 +1,2333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ICT Scholarship Program – LBEF</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        /* ============================================================
+       CSS CUSTOM PROPERTIES
+    ============================================================ */
+        
+         :root {
+            --blue: #0A66C2;
+            --blue-dark: #084d96;
+            --blue-mid: #1a78d4;
+            --blue-light: #EAF4FF;
+            --blue-pale: #f5faff;
+            --white: #ffffff;
+            --ink: #0d1b2e;
+            --ink-mid: #2c3e55;
+            --ink-soft: #5a7190;
+            --border: #d6e8f9;
+            --shadow-sm: 0 2px 12px rgba(10, 102, 194, .08);
+            --shadow-md: 0 8px 32px rgba(10, 102, 194, .13);
+            --shadow-lg: 0 20px 60px rgba(10, 102, 194, .18);
+            --radius-sm: 10px;
+            --radius-md: 18px;
+            --radius-lg: 28px;
+            --font-head: 'Sora', sans-serif;
+            --font-body: 'DM Sans', sans-serif;
+            --transition: .35s cubic-bezier(.4, 0, .2, 1);
+        }
+        /* ============================================================
+       RESET & BASE
+    ============================================================ */
+        
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            color: var(--ink);
+            background: var(--white);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        img {
+            display: block;
+            max-width: 100%;
+        }
+        
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        button {
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-family: inherit;
+        }
+        /* ============================================================
+       TYPOGRAPHY SCALE
+    ============================================================ */
+        
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: var(--font-head);
+            line-height: 1.18;
+        }
+        
+        h1 {
+            font-size: clamp(2.4rem, 5vw, 3.8rem);
+            font-weight: 800;
+            letter-spacing: -.03em;
+        }
+        
+        h2 {
+            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            font-weight: 700;
+            letter-spacing: -.025em;
+        }
+        
+        h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
+        p {
+            line-height: 1.75;
+            color: var(--ink-mid);
+            font-weight: 300;
+        }
+        /* ============================================================
+       UTILITY CLASSES
+    ============================================================ */
+        
+        .container {
+            max-width: 1140px;
+            margin-inline: auto;
+            padding-inline: clamp(1rem, 4vw, 2.5rem);
+        }
+        
+        .section {
+            padding-block: clamp(4rem, 8vw, 7rem);
+        }
+        
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            font-family: var(--font-head);
+            font-size: .78rem;
+            font-weight: 600;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--blue);
+            background: var(--blue-light);
+            border: 1px solid var(--border);
+            padding: .4rem .9rem;
+            border-radius: 50px;
+            margin-bottom: 1.1rem;
+        }
+        
+        .section-label i {
+            font-size: .7rem;
+        }
+        
+        .section-title {
+            margin-bottom: .6rem;
+        }
+        
+        .section-subtitle {
+            max-width: 600px;
+            font-size: 1.05rem;
+            color: var(--ink-soft);
+            margin-bottom: 3rem;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: .55rem;
+            font-family: var(--font-head);
+            font-size: .95rem;
+            font-weight: 600;
+            padding: .85rem 2rem;
+            border-radius: 50px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary {
+            background: var(--blue);
+            color: var(--white);
+            box-shadow: 0 4px 20px rgba(10, 102, 194, .35);
+        }
+        
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, .18), transparent 70%);
+            transform: translateX(-100%);
+            transition: .6s ease;
+        }
+        
+        .btn-primary:hover {
+            background: var(--blue-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(10, 102, 194, .4);
+        }
+        
+        .btn-primary:hover::after {
+            transform: translateX(100%);
+        }
+        
+        .btn-ghost {
+            background: transparent;
+            color: var(--blue);
+            border: 2px solid var(--blue);
+            padding: .75rem 1.8rem;
+        }
+        
+        .btn-ghost:hover {
+            background: var(--blue);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+        /* ============================================================
+       REVEAL ANIMATIONS
+    ============================================================ */
+        
+        .reveal {
+            opacity: 0;
+            transform: translateY(36px);
+            transition: opacity .7s ease, transform .7s ease;
+        }
+        
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .reveal-delay-1 {
+            transition-delay: .1s;
+        }
+        
+        .reveal-delay-2 {
+            transition-delay: .2s;
+        }
+        
+        .reveal-delay-3 {
+            transition-delay: .3s;
+        }
+        
+        .reveal-delay-4 {
+            transition-delay: .4s;
+        }
+        /* ============================================================
+       NAVBAR
+    ============================================================ */
+        
+        #navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, .88);
+            backdrop-filter: blur(18px) saturate(180%);
+            border-bottom: 1px solid transparent;
+            transition: var(--transition);
+        }
+        
+        #navbar.scrolled {
+            border-bottom-color: var(--border);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-block: 1rem;
+        }
+        
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: .65rem;
+            font-family: var(--font-head);
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--ink);
+        }
+        
+        .nav-logo .logo-badge {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: var(--blue);
+            display: grid;
+            place-items: center;
+            font-size: .85rem;
+            color: #fff;
+            font-weight: 800;
+            letter-spacing: -.02em;
+        }
+        
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            font-size: .9rem;
+            font-weight: 500;
+            color: var(--ink-mid);
+            transition: color .2s;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            right: 100%;
+            height: 2px;
+            background: var(--blue);
+            transition: right .3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--blue);
+        }
+        
+        .nav-links a:hover::after {
+            right: 0;
+        }
+        
+        .nav-cta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            width: 28px;
+            padding: 2px;
+        }
+        
+        .hamburger span {
+            display: block;
+            height: 2px;
+            background: var(--ink);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+        
+        .hamburger.open span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+        
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.open span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+        /* Mobile nav */
+        
+        .mobile-nav {
+            display: none;
+            flex-direction: column;
+            gap: 0;
+            border-top: 1px solid var(--border);
+            padding: 1rem 0 1.5rem;
+        }
+        
+        .mobile-nav a {
+            padding: .75rem 0;
+            font-size: .95rem;
+            font-weight: 500;
+            color: var(--ink-mid);
+            border-bottom: 1px solid var(--border);
+            transition: color .2s;
+        }
+        
+        .mobile-nav a:last-child {
+            border-bottom: none;
+        }
+        
+        .mobile-nav a:hover {
+            color: var(--blue);
+        }
+        
+        .mobile-nav .btn {
+            margin-top: 1rem;
+            text-align: center;
+            justify-content: center;
+        }
+        /* ============================================================
+       HERO SECTION
+    ============================================================ */
+        
+        #hero {
+            min-height: 100svh;
+            background: linear-gradient(150deg, #f0f7ff 0%, #e8f3ff 40%, #d4eaff 100%);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 5rem;
+        }
+        /* Geometric background shapes */
+        
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        
+        .hero-bg .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: var(--blue);
+            opacity: .07;
+            animation: floatShape 8s ease-in-out infinite;
+        }
+        
+        .hero-bg .shape-1 {
+            width: 480px;
+            height: 480px;
+            top: -120px;
+            right: -100px;
+            animation-delay: 0s;
+        }
+        
+        .hero-bg .shape-2 {
+            width: 280px;
+            height: 280px;
+            bottom: 60px;
+            left: -80px;
+            animation-delay: -3s;
+        }
+        
+        .hero-bg .shape-3 {
+            width: 160px;
+            height: 160px;
+            top: 40%;
+            right: 22%;
+            opacity: .05;
+            animation-delay: -5s;
+        }
+        
+        .hero-bg .ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid rgba(10, 102, 194, .12);
+            animation: floatShape 10s ease-in-out infinite;
+        }
+        
+        .hero-bg .ring-1 {
+            width: 600px;
+            height: 600px;
+            top: -180px;
+            right: -160px;
+            animation-delay: -2s;
+        }
+        
+        .hero-bg .ring-2 {
+            width: 350px;
+            height: 350px;
+            bottom: 40px;
+            left: -110px;
+            animation-delay: -6s;
+        }
+        
+        .hero-bg .grid-lines {
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(10, 102, 194, .04) 1px, transparent 1px), linear-gradient(90deg, rgba(10, 102, 194, .04) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+        
+        @keyframes floatShape {
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(12px, -18px) scale(1.03);
+            }
+            66% {
+                transform: translate(-8px, 10px) scale(.97);
+            }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .hero-left {}
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            font-family: var(--font-head);
+            font-size: .78rem;
+            font-weight: 600;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--blue);
+            background: rgba(10, 102, 194, .1);
+            border: 1px solid rgba(10, 102, 194, .2);
+            padding: .45rem 1rem;
+            border-radius: 50px;
+            margin-bottom: 1.4rem;
+            animation: fadeInUp .8s ease both;
+        }
+        
+        .hero-badge .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--blue);
+            animation: pulse 2s ease infinite;
+        }
+        
+        @keyframes pulse {
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(10, 102, 194, .5);
+            }
+            50% {
+                box-shadow: 0 0 0 5px rgba(10, 102, 194, 0);
+            }
+        }
+        
+        .hero-title {
+            animation: fadeInUp .8s .15s ease both;
+            margin-bottom: 1.2rem;
+        }
+        
+        .hero-title span {
+            color: var(--blue);
+        }
+        
+        .hero-sub {
+            font-size: 1.15rem;
+            font-weight: 400;
+            color: var(--ink-soft);
+            margin-bottom: 2.2rem;
+            animation: fadeInUp .8s .28s ease both;
+        }
+        
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1rem;
+            animation: fadeInUp .8s .4s ease both;
+        }
+        
+        .hero-stats {
+            display: flex;
+            gap: 2.5rem;
+            margin-top: 3rem;
+            animation: fadeInUp .8s .55s ease both;
+        }
+        
+        .stat-item {}
+        
+        .stat-num {
+            font-family: var(--font-head);
+            font-size: 1.9rem;
+            font-weight: 800;
+            color: var(--blue);
+            line-height: 1;
+        }
+        
+        .stat-label {
+            font-size: .82rem;
+            color: var(--ink-soft);
+            font-weight: 400;
+            margin-top: .2rem;
+        }
+        /* Hero illustration card */
+        
+        .hero-right {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .hero-card-wrap {
+            position: relative;
+            width: 100%;
+            max-width: 420px;
+            animation: fadeInUp .9s .3s ease both;
+        }
+        
+        .hero-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-card-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: var(--radius-md);
+            background: var(--blue-light);
+            display: grid;
+            place-items: center;
+            font-size: 1.6rem;
+            color: var(--blue);
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: .5rem;
+        }
+        
+        .hero-card p {
+            font-size: .9rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .card-feature {
+            display: flex;
+            align-items: center;
+            gap: .7rem;
+            padding: .65rem .85rem;
+            border-radius: var(--radius-sm);
+            background: var(--blue-light);
+            margin-bottom: .5rem;
+            font-size: .85rem;
+            font-weight: 500;
+            color: var(--ink-mid);
+        }
+        
+        .card-feature i {
+            color: var(--blue);
+            font-size: .9rem;
+        }
+        
+        .hero-float-1,
+        .hero-float-2 {
+            position: absolute;
+            background: var(--white);
+            border-radius: var(--radius-md);
+            padding: .75rem 1.1rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+            font-size: .82rem;
+            font-weight: 600;
+            color: var(--ink);
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        .hero-float-1 {
+            bottom: -18px;
+            left: -24px;
+            animation-delay: 0s;
+        }
+        
+        .hero-float-2 {
+            top: -18px;
+            right: -20px;
+            animation-delay: -2s;
+        }
+        
+        .hero-float-1 i {
+            color: #16a34a;
+        }
+        
+        .hero-float-2 i {
+            color: var(--blue);
+        }
+        
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0)
+            }
+            50% {
+                transform: translateY(-8px)
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px)
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+        /* ============================================================
+       ABOUT SECTION
+    ============================================================ */
+        
+        #about {
+            background: var(--white);
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+        
+        .about-left {}
+        
+        .about-right {}
+        
+        .about-features {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 2rem;
+        }
+        
+        .about-feature {
+            display: flex;
+            gap: 1.1rem;
+            align-items: flex-start;
+            padding: 1.2rem 1.4rem;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+        
+        .about-feature:hover {
+            border-color: var(--blue);
+            background: var(--blue-pale);
+            transform: translateX(6px);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .feature-icon {
+            width: 46px;
+            height: 46px;
+            min-width: 46px;
+            border-radius: 12px;
+            background: var(--blue-light);
+            display: grid;
+            place-items: center;
+            font-size: 1.1rem;
+            color: var(--blue);
+        }
+        
+        .feature-text h4 {
+            font-size: 1rem;
+            margin-bottom: .25rem;
+        }
+        
+        .feature-text p {
+            font-size: .88rem;
+        }
+        /* About visual */
+        
+        .about-visual {
+            position: relative;
+            border-radius: var(--radius-lg);
+            background: linear-gradient(135deg, var(--blue) 0%, #1a78d4 100%);
+            padding: 3rem 2.5rem;
+            color: var(--white);
+            overflow: hidden;
+        }
+        
+        .about-visual::before {
+            content: '';
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .08);
+        }
+        
+        .about-visual::after {
+            content: '';
+            position: absolute;
+            bottom: -60px;
+            left: -30px;
+            width: 260px;
+            height: 260px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .05);
+        }
+        
+        .about-visual .av-label {
+            font-size: .75rem;
+            font-weight: 600;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            opacity: .7;
+            margin-bottom: 1rem;
+        }
+        
+        .about-visual h3 {
+            font-size: 1.5rem;
+            margin-bottom: .8rem;
+            color: #fff;
+        }
+        
+        .about-visual p {
+            opacity: .85;
+            font-size: .92rem;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, .85);
+        }
+        
+        .av-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .av-stat {
+            background: rgba(255, 255, 255, .12);
+            border-radius: var(--radius-sm);
+            padding: 1.1rem;
+            border: 1px solid rgba(255, 255, 255, .15);
+            backdrop-filter: blur(6px);
+        }
+        
+        .av-stat .num {
+            font-family: var(--font-head);
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: #fff;
+        }
+        
+        .av-stat .lbl {
+            font-size: .8rem;
+            opacity: .75;
+            margin-top: .15rem;
+            color: rgba(255, 255, 255, .8);
+        }
+        /* ============================================================
+       WHY CHOOSE LBEF
+    ============================================================ */
+        
+        #why {
+            background: var(--blue-pale);
+        }
+        
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.6rem;
+        }
+        
+        .why-card {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            padding: 2rem 1.8rem;
+            border: 1px solid var(--border);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            cursor: default;
+        }
+        
+        .why-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--blue) 0%, #1a78d4 100%);
+            opacity: 0;
+            transition: opacity .4s ease;
+        }
+        
+        .why-card:hover::before {
+            opacity: 1;
+        }
+        
+        .why-card:hover {
+            border-color: var(--blue);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-6px);
+        }
+        
+        .why-card-inner {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .why-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            background: var(--blue-light);
+            display: grid;
+            place-items: center;
+            font-size: 1.3rem;
+            color: var(--blue);
+            margin-bottom: 1.4rem;
+            transition: background .4s, color .4s;
+        }
+        
+        .why-card:hover .why-icon {
+            background: rgba(255, 255, 255, .2);
+            color: #fff;
+        }
+        
+        .why-card h3 {
+            margin-bottom: .6rem;
+            transition: color .4s;
+        }
+        
+        .why-card:hover h3 {
+            color: #fff;
+        }
+        
+        .why-card p {
+            font-size: .9rem;
+            transition: color .4s;
+        }
+        
+        .why-card:hover p {
+            color: rgba(255, 255, 255, .82);
+        }
+        
+        .why-card .card-arrow {
+            display: flex;
+            align-items: center;
+            gap: .35rem;
+            font-size: .82rem;
+            font-weight: 600;
+            color: var(--blue);
+            margin-top: 1.2rem;
+            transition: color .4s;
+        }
+        
+        .why-card:hover .card-arrow {
+            color: rgba(255, 255, 255, .9);
+        }
+        /* ============================================================
+       ELIGIBILITY
+    ============================================================ */
+        
+        #eligibility {
+            background: var(--white);
+        }
+        
+        .eligibility-wrap {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: start;
+        }
+        
+        .eligibility-list {
+            display: flex;
+            flex-direction: column;
+            gap: .9rem;
+        }
+        
+        .eligibility-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.1rem 1.3rem;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+        
+        .eligibility-item:hover {
+            border-color: var(--blue);
+            background: var(--blue-pale);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .check-circle {
+            width: 28px;
+            height: 28px;
+            min-width: 28px;
+            border-radius: 50%;
+            background: var(--blue-light);
+            display: grid;
+            place-items: center;
+            color: var(--blue);
+            font-size: .75rem;
+            margin-top: .1rem;
+        }
+        
+        .eligibility-item p {
+            font-size: .92rem;
+            margin: 0;
+        }
+        
+        .eligibility-aside {
+            background: var(--blue-pale);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            position: sticky;
+            top: 6rem;
+        }
+        
+        .aside-title {
+            font-family: var(--font-head);
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1.4rem;
+            color: var(--ink);
+        }
+        
+        .deadline-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: .8rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .deadline-item:last-child {
+            border-bottom: none;
+        }
+        
+        .deadline-item .d-label {
+            font-size: .88rem;
+            color: var(--ink-mid);
+            font-weight: 400;
+        }
+        
+        .deadline-item .d-value {
+            font-size: .88rem;
+            font-weight: 600;
+            color: var(--ink);
+        }
+        
+        .deadline-item .d-value.blue {
+            color: var(--blue);
+        }
+        
+        .eligibility-aside .btn {
+            width: 100%;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+        /* ============================================================
+       BENEFITS
+    ============================================================ */
+        
+        #benefits {
+            background: var(--blue-pale);
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.6rem;
+        }
+        
+        .benefit-card {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            padding: 2rem 1.8rem;
+            border: 1px solid var(--border);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .benefit-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-4px);
+            border-color: var(--blue);
+        }
+        
+        .benefit-top {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .benefit-icon {
+            width: 50px;
+            height: 50px;
+            min-width: 50px;
+            border-radius: 13px;
+            background: var(--blue-light);
+            display: grid;
+            place-items: center;
+            font-size: 1.25rem;
+            color: var(--blue);
+        }
+        
+        .benefit-card h3 {
+            font-size: 1.05rem;
+        }
+        
+        .benefit-card p {
+            font-size: .9rem;
+            flex: 1;
+        }
+        
+        .benefit-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: .35rem;
+            font-size: .78rem;
+            font-weight: 600;
+            color: var(--blue);
+            background: var(--blue-light);
+            padding: .3rem .75rem;
+            border-radius: 50px;
+            align-self: flex-start;
+        }
+        /* ============================================================
+       APPLICATION PROCESS
+    ============================================================ */
+        
+        #process {
+            background: var(--white);
+        }
+        
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            position: relative;
+            margin-top: 1rem;
+        }
+        
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 36px;
+            left: calc(12.5%);
+            right: calc(12.5%);
+            height: 2px;
+            background: linear-gradient(90deg, var(--blue), var(--blue-mid));
+            z-index: 0;
+        }
+        
+        .process-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 0 1rem;
+        }
+        
+        .step-circle {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 2px solid var(--border);
+            display: grid;
+            place-items: center;
+            position: relative;
+            z-index: 1;
+            margin-bottom: 1.4rem;
+            transition: var(--transition);
+        }
+        
+        .step-circle.active {
+            background: var(--blue);
+            border-color: var(--blue);
+            box-shadow: 0 0 0 8px var(--blue-light);
+        }
+        
+        .step-circle .step-num {
+            font-family: var(--font-head);
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--ink-soft);
+        }
+        
+        .step-circle.active .step-num {
+            color: #fff;
+        }
+        
+        .step-icon-ring {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            position: relative;
+            z-index: 1;
+            margin-bottom: 1.4rem;
+            background: var(--blue);
+            box-shadow: 0 0 0 8px var(--blue-light);
+            font-size: 1.5rem;
+            color: #fff;
+        }
+        
+        .process-step h4 {
+            font-size: 1rem;
+            margin-bottom: .4rem;
+        }
+        
+        .process-step p {
+            font-size: .85rem;
+        }
+        /* ============================================================
+       CONTACT / APPLY
+    ============================================================ */
+        
+        #contact {
+            background: linear-gradient(150deg, #0d1f35 0%, #0a2a50 50%, #082044 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #contact::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: rgba(10, 102, 194, .15);
+        }
+        
+        #contact .section-label {
+            background: rgba(255, 255, 255, .08);
+            color: #90c8f8;
+            border-color: rgba(255, 255, 255, .1);
+        }
+        
+        #contact .section-title {
+            color: #fff;
+        }
+        
+        #contact .section-subtitle {
+            color: rgba(255, 255, 255, .6);
+        }
+        
+        .contact-wrap {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 5rem;
+            align-items: start;
+        }
+        
+        .contact-left {}
+        
+        .contact-info {
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+        
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: rgba(255, 255, 255, .8);
+            font-size: .92rem;
+        }
+        
+        .ci-icon {
+            width: 42px;
+            height: 42px;
+            min-width: 42px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, .08);
+            display: grid;
+            place-items: center;
+            font-size: 1rem;
+            color: #90c8f8;
+        }
+        /* Form */
+        
+        .contact-form {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 2.8rem;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .contact-form h3 {
+            font-size: 1.35rem;
+            margin-bottom: .4rem;
+            color: var(--ink);
+        }
+        
+        .form-sub {
+            font-size: .88rem;
+            color: var(--ink-soft);
+            margin-bottom: 1.8rem;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: .45rem;
+        }
+        
+        .form-group.full {
+            grid-column: 1/-1;
+        }
+        
+        .form-group label {
+            font-size: .82rem;
+            font-weight: 600;
+            color: var(--ink-mid);
+            letter-spacing: .02em;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: .85rem 1rem;
+            border-radius: var(--radius-sm);
+            border: 1.5px solid var(--border);
+            font-family: var(--font-body);
+            font-size: .92rem;
+            color: var(--ink);
+            background: var(--white);
+            transition: border-color .25s, box-shadow .25s;
+            outline: none;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--blue);
+            box-shadow: 0 0 0 3px rgba(10, 102, 194, .12);
+        }
+        
+        .form-group input.error,
+        .form-group select.error {
+            border-color: #e53e3e;
+        }
+        
+        .form-error {
+            font-size: .78rem;
+            color: #e53e3e;
+            display: none;
+        }
+        
+        .form-error.show {
+            display: block;
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .form-submit {
+            margin-top: 1.5rem;
+        }
+        
+        .form-submit .btn {
+            width: 100%;
+            justify-content: center;
+            font-size: 1rem;
+            padding: 1rem;
+        }
+        
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+            color: #16a34a;
+            font-weight: 600;
+        }
+        
+        .form-success i {
+            font-size: 2.5rem;
+            margin-bottom: .8rem;
+            display: block;
+        }
+        
+        .form-success.show {
+            display: block;
+        }
+        /* ============================================================
+       FOOTER
+    ============================================================ */
+        
+        footer {
+            background: #080f1a;
+            color: rgba(255, 255, 255, .6);
+            padding-block: 3rem 2rem;
+            border-top: 1px solid rgba(255, 255, 255, .05);
+        }
+        
+        .footer-inner {
+            display: grid;
+            grid-template-columns: 1.6fr 1fr 1fr 1fr;
+            gap: 3rem;
+        }
+        
+        .footer-brand {}
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+            font-family: var(--font-head);
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+        
+        .footer-logo .logo-badge {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: var(--blue);
+            display: grid;
+            place-items: center;
+            font-size: .78rem;
+            font-weight: 800;
+            color: #fff;
+        }
+        
+        .footer-brand p {
+            font-size: .88rem;
+            line-height: 1.7;
+            max-width: 280px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: .7rem;
+            margin-top: 1.4rem;
+        }
+        
+        .social-links a {
+            width: 36px;
+            height: 36px;
+            border-radius: 9px;
+            background: rgba(255, 255, 255, .07);
+            display: grid;
+            place-items: center;
+            font-size: .9rem;
+            color: rgba(255, 255, 255, .6);
+            transition: background .25s, color .25s, transform .25s;
+            border: 1px solid rgba(255, 255, 255, .08);
+        }
+        
+        .social-links a:hover {
+            background: var(--blue);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+        
+        .footer-col h4 {
+            font-family: var(--font-head);
+            font-size: .88rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 1.1rem;
+            letter-spacing: .02em;
+        }
+        
+        .footer-col ul {
+            display: flex;
+            flex-direction: column;
+            gap: .6rem;
+        }
+        
+        .footer-col ul li a {
+            font-size: .86rem;
+            color: rgba(255, 255, 255, .55);
+            transition: color .2s;
+        }
+        
+        .footer-col ul li a:hover {
+            color: var(--white);
+        }
+        
+        .footer-bottom {
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, .06);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: .82rem;
+        }
+        
+        .footer-bottom a {
+            color: var(--blue);
+            transition: color .2s;
+        }
+        
+        .footer-bottom a:hover {
+            color: #90c8f8;
+        }
+        /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+        
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            .hero-right {
+                display: none;
+            }
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            .eligibility-wrap {
+                grid-template-columns: 1fr;
+            }
+            .eligibility-aside {
+                position: static;
+            }
+            .contact-wrap {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            .footer-inner {
+                grid-template-columns: 1fr 1fr;
+                gap: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links,
+            .nav-cta {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .mobile-nav {
+                display: flex;
+            }
+            .process-steps {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+            .process-steps::before {
+                display: none;
+            }
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-stats {
+                gap: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 520px) {
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+            .footer-inner {
+                grid-template-columns: 1fr;
+            }
+            .av-stats {
+                grid-template-columns: 1fr;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                gap: .8rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ============================================================
+       NAVBAR
+  ============================================================ -->
+    <nav id="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container">
+            <div class="nav-inner">
+                <a href="#hero" class="nav-logo" aria-label="LBEF Home">
+                    <div class="logo-badge" aria-hidden="true">LB</div>
+                    <span>LBEF</span>
+                </a>
+
+                <ul class="nav-links" role="list">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#why">Why LBEF</a></li>
+                    <li><a href="#eligibility">Eligibility</a></li>
+                    <li><a href="#benefits">Benefits</a></li>
+                    <li><a href="#process">Process</a></li>
+                </ul>
+
+                <div class="nav-cta">
+                    <a href="#contact" class="btn btn-primary">Apply Now <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+            </div>
+
+            <!-- Mobile menu -->
+            <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+                <a href="#about">About</a>
+                <a href="#why">Why LBEF</a>
+                <a href="#eligibility">Eligibility</a>
+                <a href="#benefits">Benefits</a>
+                <a href="#process">Process</a>
+                <a href="#contact" class="btn btn-primary">Apply Now <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============================================================
+       HERO SECTION
+  ============================================================ -->
+    <section id="hero" aria-label="Hero">
+        <!-- Background shapes -->
+        <div class="hero-bg" aria-hidden="true">
+            <div class="grid-lines"></div>
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="ring ring-1"></div>
+            <div class="ring ring-2"></div>
+        </div>
+
+        <div class="container">
+            <div class="hero-content">
+                <!-- Left copy -->
+                <div class="hero-left">
+                    <div class="hero-badge">
+                        <span class="dot" aria-hidden="true"></span> Now Accepting Applications 2025
+                    </div>
+
+                    <h1 class="hero-title">
+                        ICT Scholarship<br>Program at <span>LBEF</span>
+                    </h1>
+
+                    <p class="hero-sub">
+                        Empowering Future IT Professionals with world-class education,<br> industry exposure, and life-changing opportunities.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="#contact" class="btn btn-primary">
+              Apply Now <i class="fa-solid fa-arrow-right"></i>
+            </a>
+                        <a href="https://lbef.org/ict-scholarship" class="btn btn-ghost">
+              Learn More <i class="fa-solid fa-chevron-down"></i>
+            </a>
+                    </div>
+
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-num">500+</div>
+                            <div class="stat-label">Scholarships Awarded</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-num">95%</div>
+                            <div class="stat-label">Placement Rate</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-num">20+</div>
+                            <div class="stat-label">Industry Partners</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right card -->
+                <div class="hero-right" aria-hidden="true">
+                    <div class="hero-card-wrap">
+                        <div class="hero-card">
+                            <div class="hero-card-icon">
+                                <i class="fa-solid fa-laptop-code"></i>
+                            </div>
+                            <h3>ICT Scholarship 2025</h3>
+                            <p>Full & partial scholarships for deserving students in BSc. CSIT, BCA & BIT programs.</p>
+                            <div class="card-feature"><i class="fa-solid fa-check-circle"></i> Merit-based selection</div>
+                            <div class="card-feature"><i class="fa-solid fa-check-circle"></i> Up to 100% tuition waiver</div>
+                            <div class="card-feature"><i class="fa-solid fa-check-circle"></i> Internship guaranteed</div>
+                        </div>
+                        <div class="hero-float-1">
+                            <i class="fa-solid fa-circle-check"></i> Applications Open
+                        </div>
+                        <div class="hero-float-2">
+                            <i class="fa-solid fa-users"></i> 500+ Scholars
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+       ABOUT SECTION
+  ============================================================ -->
+    <section id="about" class="section" aria-labelledby="about-heading">
+        <div class="container">
+            <div class="about-grid">
+                <!-- Left copy -->
+                <div class="about-left">
+                    <div class="section-label reveal"><i class="fa-solid fa-circle-info"></i> About the Program</div>
+                    <h2 class="section-title reveal reveal-delay-1" id="about-heading">
+                        Shaping Nepal's ICT Future, One Scholar at a Time
+                    </h2>
+                    <p class="reveal reveal-delay-2">
+                        The LBEF ICT Scholarship Program is designed to identify and nurture academically brilliant students from all economic backgrounds, providing them with the tools, training, and support they need to become tomorrow's technology leaders.
+                    </p>
+
+                    <div class="about-features">
+                        <div class="about-feature reveal reveal-delay-1">
+                            <div class="feature-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                            <div class="feature-text">
+                                <h4>Academic Excellence Support</h4>
+                                <p>Comprehensive academic support including tutoring, workshops, and mentorship from senior faculty.</p>
+                            </div>
+                        </div>
+                        <div class="about-feature reveal reveal-delay-2">
+                            <div class="feature-icon"><i class="fa-solid fa-handshake"></i></div>
+                            <div class="feature-text">
+                                <h4>Industry Connections</h4>
+                                <p>Direct connections with 20+ top IT companies in Nepal and abroad for internships and placements.</p>
+                            </div>
+                        </div>
+                        <div class="about-feature reveal reveal-delay-3">
+                            <div class="feature-icon"><i class="fa-solid fa-globe"></i></div>
+                            <div class="feature-text">
+                                <h4>Internationally Recognized Degree</h4>
+                                <p>Affiliations with Tribhuvan University and Pokhara University with globally accepted certifications.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right visual -->
+                <div class="about-right reveal reveal-delay-2">
+                    <div class="about-visual">
+                        <div class="av-label">Program Overview</div>
+                        <h3>Lord Buddha Education Foundation</h3>
+                        <p>Established in 2001, LBEF has been a pioneer in technology education in Nepal, consistently producing graduates who excel in the global IT landscape.</p>
+                        <div class="av-stats">
+                            <div class="av-stat">
+                                <div class="num">22+</div>
+                                <div class="lbl">Years of Excellence</div>
+                            </div>
+                            <div class="av-stat">
+                                <div class="num">10K+</div>
+                                <div class="lbl">Alumni Worldwide</div>
+                            </div>
+                            <div class="av-stat">
+                                <div class="num">50+</div>
+                                <div class="lbl">Expert Faculty</div>
+                            </div>
+                            <div class="av-stat">
+                                <div class="num">4</div>
+                                <div class="lbl">ICT Programs</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+       WHY CHOOSE LBEF
+  ============================================================ -->
+    <section id="why" class="section" aria-labelledby="why-heading">
+        <div class="container">
+            <div class="section-label reveal"><i class="fa-solid fa-star"></i> Why Choose Us</div>
+            <h2 class="section-title reveal reveal-delay-1" id="why-heading">The LBEF Advantage</h2>
+            <p class="section-subtitle reveal reveal-delay-2">
+                Discover what sets LBEF apart and why thousands of students trust us with their future.
+            </p>
+
+            <div class="why-grid">
+                <div class="why-card reveal reveal-delay-1">
+                    <div class="why-card-inner">
+                        <div class="why-icon"><i class="fa-solid fa-book-open"></i></div>
+                        <h3>Quality Education</h3>
+                        <p>Rigorous curriculum crafted in collaboration with industry experts, ensuring students are job-ready from day one.</p>
+                        <div class="card-arrow">Learn more <i class="fa-solid fa-arrow-right"></i></div>
+                    </div>
+                </div>
+                <div class="why-card reveal reveal-delay-2">
+                    <div class="why-card-inner">
+                        <div class="why-icon"><i class="fa-solid fa-building"></i></div>
+                        <h3>Industry Exposure</h3>
+                        <p>Regular industrial visits, live projects, hackathons, and internship programs with leading IT companies.</p>
+                        <div class="card-arrow">Learn more <i class="fa-solid fa-arrow-right"></i></div>
+                    </div>
+                </div>
+                <div class="why-card reveal reveal-delay-3">
+                    <div class="why-card-inner">
+                        <div class="why-icon"><i class="fa-solid fa-chalkboard-teacher"></i></div>
+                        <h3>Experienced Faculty</h3>
+                        <p>Learn from a team of 50+ seasoned professors, industry veterans, and research scholars with global credentials.</p>
+                        <div class="card-arrow">Learn more <i class="fa-solid fa-arrow-right"></i></div>
+                    </div>
+                </div>
+                <div class="why-card reveal reveal-delay-4">
+                    <div class="why-card-inner">
+                        <div class="why-icon"><i class="fa-solid fa-earth-asia"></i></div>
+                        <h3>Global Degree Affiliation</h3>
+                        <p>Degrees affiliated with TU and PU, recognized globally, opening doors to international career opportunities.</p>
+                        <div class="card-arrow">Learn more <i class="fa-solid fa-arrow-right"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+       ELIGIBILITY CRITERIA
+  ============================================================ -->
+    <section id="eligibility" class="section" aria-labelledby="eligibility-heading">
+        <div class="container">
+            <div class="section-label reveal"><i class="fa-solid fa-list-check"></i> Eligibility</div>
+            <h2 class="section-title reveal reveal-delay-1" id="eligibility-heading">Who Can Apply?</h2>
+            <p class="section-subtitle reveal reveal-delay-2">
+                Check the criteria below to see if you qualify for the LBEF ICT Scholarship Program.
+            </p>
+
+            <div class="eligibility-wrap">
+                <!-- Checklist -->
+                <div class="eligibility-list">
+                    <div class="eligibility-item reveal reveal-delay-1">
+                        <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                        <p>Nepalese citizen who has completed +2 / Higher Secondary Education (Science or Management stream preferred)</p>
+                    </div>
+                    <div class="eligibility-item reveal reveal-delay-2">
+                        <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                        <p>Minimum GPA of 2.8 or equivalent percentage (50% or above) in SEE and +2</p>
+                    </div>
+                    <div class="eligibility-item reveal reveal-delay-3">
+                        <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                        <p>Demonstrated interest or background in ICT, mathematics, or related technical subjects</p>
+                    </div>
+                    <div class="eligibility-item reveal reveal-delay-4">
+                        <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                        <p>Economically disadvantaged students from rural areas are especially encouraged to apply</p>
+                    </div>
+                    <div class="eligibility-item reveal">
+                        <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                        <p>Students who have not previously received a full scholarship from any other institution</p>
+                    </div>
+                    <div class="eligibility-item reveal reveal-delay-1">
+                        <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                        <p>Must pass the LBEF entrance assessment test and attend a personal interview</p>
+                    </div>
+                    <div class="eligibility-item reveal reveal-delay-2">
+                        <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                        <p>Age limit: 16–25 years old at the time of application submission</p>
+                    </div>
+                    <div class="eligibility-item reveal reveal-delay-3">
+                        <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                        <p>Must maintain a minimum CGPA of 3.0 each semester to retain the scholarship</p>
+                    </div>
+                </div>
+
+                <!-- Aside box -->
+                <div class="eligibility-aside reveal reveal-delay-2">
+                    <div class="aside-title">📅 Important Dates</div>
+                    <div class="deadline-item">
+                        <span class="d-label">Applications Open</span>
+                        <span class="d-value blue">Jan 15, 2025</span>
+                    </div>
+                    <div class="deadline-item">
+                        <span class="d-label">Application Deadline</span>
+                        <span class="d-value">Mar 31, 2025</span>
+                    </div>
+                    <div class="deadline-item">
+                        <span class="d-label">Entrance Test</span>
+                        <span class="d-value">Apr 10, 2025</span>
+                    </div>
+                    <div class="deadline-item">
+                        <span class="d-label">Interviews</span>
+                        <span class="d-value">Apr 15–20, 2025</span>
+                    </div>
+                    <div class="deadline-item">
+                        <span class="d-label">Results Announced</span>
+                        <span class="d-value blue">May 1, 2025</span>
+                    </div>
+                    <div class="deadline-item">
+                        <span class="d-label">Program Starts</span>
+                        <span class="d-value">Aug 1, 2025</span>
+                    </div>
+                    <a href="#contact" class="btn btn-primary">Apply Before Deadline <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+       SCHOLARSHIP BENEFITS
+  ============================================================ -->
+    <section id="benefits" class="section" aria-labelledby="benefits-heading">
+        <div class="container">
+            <div class="section-label reveal"><i class="fa-solid fa-gift"></i> What You Get</div>
+            <h2 class="section-title reveal reveal-delay-1" id="benefits-heading">Scholarship Benefits</h2>
+            <p class="section-subtitle reveal reveal-delay-2">
+                More than just tuition support — a complete launchpad for your career in technology.
+            </p>
+
+            <div class="benefits-grid">
+                <div class="benefit-card reveal reveal-delay-1">
+                    <div class="benefit-top">
+                        <div class="benefit-icon"><i class="fa-solid fa-money-bill-wave"></i></div>
+                        <h3>Financial Support</h3>
+                    </div>
+                    <p>Up to 100% tuition fee waiver for meritorious and need-based students, reducing financial barriers to quality ICT education.</p>
+                    <div class="benefit-tag"><i class="fa-solid fa-tag"></i> Up to NPR 4,00,000/yr</div>
+                </div>
+                <div class="benefit-card reveal reveal-delay-2">
+                    <div class="benefit-top">
+                        <div class="benefit-icon"><i class="fa-solid fa-briefcase"></i></div>
+                        <h3>Guaranteed Internship</h3>
+                    </div>
+                    <p>6-month paid internship with one of 20+ partner companies including top IT firms, startups, and government bodies in Nepal.</p>
+                    <div class="benefit-tag"><i class="fa-solid fa-tag"></i> Paid Placement</div>
+                </div>
+                <div class="benefit-card reveal reveal-delay-3">
+                    <div class="benefit-top">
+                        <div class="benefit-icon"><i class="fa-solid fa-laptop"></i></div>
+                        <h3>Laptop & Resources</h3>
+                    </div>
+                    <p>Selected scholars receive a dedicated laptop, access to software licenses, online learning platforms, and the LBEF digital library.</p>
+                    <div class="benefit-tag"><i class="fa-solid fa-tag"></i> Hardware + Software</div>
+                </div>
+                <div class="benefit-card reveal reveal-delay-4">
+                    <div class="benefit-top">
+                        <div class="benefit-icon"><i class="fa-solid fa-user-tie"></i></div>
+                        <h3>Career Mentorship</h3>
+                    </div>
+                    <p>One-on-one mentorship sessions with industry professionals, CV reviews, mock interviews, and career counseling throughout the program.</p>
+                    <div class="benefit-tag"><i class="fa-solid fa-tag"></i> Ongoing Support</div>
+                </div>
+                <div class="benefit-card reveal reveal-delay-1">
+                    <div class="benefit-top">
+                        <div class="benefit-icon"><i class="fa-solid fa-certificate"></i></div>
+                        <h3>Certification Programs</h3>
+                    </div>
+                    <p>Access to free industry certifications including AWS Cloud Practitioner, Google IT Support, and Cisco CCNA during the program.</p>
+                    <div class="benefit-tag"><i class="fa-solid fa-tag"></i> Industry Certifications</div>
+                </div>
+                <div class="benefit-card reveal reveal-delay-2">
+                    <div class="benefit-top">
+                        <div class="benefit-icon"><i class="fa-solid fa-network-wired"></i></div>
+                        <h3>Alumni Network</h3>
+                    </div>
+                    <p>Lifetime access to the LBEF Alumni Network — 10,000+ professionals across Nepal and globally who actively support each other's growth.</p>
+                    <div class="benefit-tag"><i class="fa-solid fa-tag"></i> Lifetime Access</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+       APPLICATION PROCESS
+  ============================================================ -->
+    <section id="process" class="section" aria-labelledby="process-heading">
+        <div class="container">
+            <div class="section-label reveal"><i class="fa-solid fa-route"></i> How to Apply</div>
+            <h2 class="section-title reveal reveal-delay-1" id="process-heading">Application Process</h2>
+            <p class="section-subtitle reveal reveal-delay-2">
+                Four simple steps stand between you and your scholarship. Let's get started.
+            </p>
+
+            <div class="process-steps">
+                <div class="process-step reveal reveal-delay-1">
+                    <div class="step-icon-ring" aria-hidden="true">
+                        <i class="fa-solid fa-file-pen"></i>
+                    </div>
+                    <h4>Fill Application</h4>
+                    <p>Complete the online scholarship application form with your academic and personal details.</p>
+                </div>
+                <div class="process-step reveal reveal-delay-2">
+                    <div class="step-icon-ring" aria-hidden="true" style="background:#1a78d4; box-shadow: 0 0 0 8px #ddeeff;">
+                        <i class="fa-solid fa-file-upload"></i>
+                    </div>
+                    <h4>Submit Documents</h4>
+                    <p>Upload your academic transcripts, citizenship, recommendation letter, and SOP.</p>
+                </div>
+                <div class="process-step reveal reveal-delay-3">
+                    <div class="step-icon-ring" aria-hidden="true" style="background:#084d96; box-shadow: 0 0 0 8px #d4eaff;">
+                        <i class="fa-solid fa-comments"></i>
+                    </div>
+                    <h4>Interview</h4>
+                    <p>Shortlisted candidates attend an in-person or virtual interview panel with LBEF faculty.</p>
+                </div>
+                <div class="process-step reveal reveal-delay-4">
+                    <div class="step-icon-ring" aria-hidden="true" style="background:#16a34a; box-shadow: 0 0 0 8px #dcfce7;">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+                    <h4>Selection</h4>
+                    <p>Results announced. Successful scholars receive their award letter and enrollment guide.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+       CONTACT / APPLY SECTION
+  ============================================================ -->
+    <section id="contact" class="section" aria-labelledby="contact-heading">
+        <div class="container">
+            <div class="contact-wrap">
+                <!-- Left info -->
+                <div class="contact-left reveal">
+                    <div class="section-label"><i class="fa-solid fa-paper-plane"></i> Get In Touch</div>
+                    <h2 class="section-title" id="contact-heading" style="color:#fff;">
+                        Ready to Begin Your Journey?
+                    </h2>
+                    <p class="section-subtitle" style="margin-bottom:0;">
+                        Fill in the form and our admissions team will get back to you within 2 business days. Don't miss your chance.
+                    </p>
+
+                    <div class="contact-info">
+                        <div class="contact-info-item">
+                            <div class="ci-icon"><i class="fa-solid fa-location-dot"></i></div>
+                            <span>MaitiDevi, Kathmandu, Nepal</span>
+                        </div>
+                        <div class="contact-info-item">
+                            <div class="ci-icon"><i class="fa-solid fa-phone"></i></div>
+                            <span>+977-01-4441111 / 4442222</span>
+                        </div>
+                        <div class="contact-info-item">
+                            <div class="ci-icon"><i class="fa-solid fa-envelope"></i></div>
+                            <span>scholarship@lbef.edu.np</span>
+                        </div>
+                        <div class="contact-info-item">
+                            <div class="ci-icon"><i class="fa-solid fa-clock"></i></div>
+                            <span>Mon–Fri: 9AM – 5PM | Sat: 10AM – 2PM</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right form -->
+                <div class="contact-form reveal reveal-delay-2">
+                    <h3>Scholarship Application</h3>
+                    <p class="form-sub">All fields marked with * are required.</p>
+
+                    <form id="scholarshipForm" novalidate>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" placeholder="Ramesh" required />
+                                <span class="form-error" id="firstNameErr">Please enter your first name.</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" placeholder="Sharma" required />
+                                <span class="form-error" id="lastNameErr">Please enter your last name.</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" placeholder="you@example.com" required />
+                                <span class="form-error" id="emailErr">Please enter a valid email address.</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" placeholder="+977 98XXXXXXXX" required />
+                                <span class="form-error" id="phoneErr">Please enter a valid phone number.</span>
+                            </div>
+                            <div class="form-group full">
+                                <label for="program">Desired Program *</label>
+                                <select id="program" name="program" required>
+                  <option value="">-- Select a Program --</option>
+                  <option>BSc. CSIT (4 Years)</option>
+                  <option>BCA – Bachelor of Computer Applications</option>
+                  <option>BIT – Bachelor of Information Technology</option>
+                  <option>BIM – Bachelor of Information Management</option>
+                </select>
+                                <span class="form-error" id="programErr">Please select a program.</span>
+                            </div>
+                            <div class="form-group full">
+                                <label for="message">Why do you deserve this scholarship? *</label>
+                                <textarea id="message" name="message" rows="4" placeholder="Briefly describe your background, aspirations, and why you're applying..." required></textarea>
+                                <span class="form-error" id="messageErr">Please write a short statement.</span>
+                            </div>
+                        </div>
+
+                        <div class="form-submit">
+                            <button type="submit" class="btn btn-primary">
+                Submit Application <i class="fa-solid fa-paper-plane"></i>
+              </button>
+                        </div>
+                    </form>
+
+                    <!-- Success state -->
+                    <div class="form-success" id="formSuccess">
+                        <i class="fa-solid fa-circle-check" style="color:#16a34a;"></i>
+                        <strong>Application Submitted!</strong><br>
+                        <span style="font-weight:300; color:var(--ink-mid); font-size:.92rem;">
+              Thank you! Our admissions team will contact you within 2 business days.
+            </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+    <footer role="contentinfo">
+        <div class="container">
+            <div class="footer-inner">
+                <!-- Brand -->
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <div class="logo-badge" aria-hidden="true">LB</div>
+                        LBEF
+                    </div>
+                    <p>Lord Buddha Education Foundation — pioneering ICT education in Nepal since 2001. Empowering students to lead the digital future.</p>
+                    <div class="social-links" aria-label="Social media links">
+                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter / X"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- Programs -->
+                <div class="footer-col">
+                    <h4>Programs</h4>
+                    <ul>
+                        <li><a href="#">BSc. CSIT</a></li>
+                        <li><a href="#">BCA</a></li>
+                        <li><a href="#">BIT</a></li>
+                        <li><a href="#">BIM</a></li>
+                        <li><a href="#">MCA</a></li>
+                    </ul>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#about">About Program</a></li>
+                        <li><a href="#eligibility">Eligibility</a></li>
+                        <li><a href="#benefits">Benefits</a></li>
+                        <li><a href="#process">How to Apply</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="#">Putalisadak, Kathmandu</a></li>
+                        <li><a href="tel:+97714441111">01-4441111</a></li>
+                        <li><a href="mailto:scholarship@lbef.edu.np">scholarship@lbef.edu.np</a></li>
+                        <li><a href="#">www.lbef.edu.np</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <span>© 2025 <a href="#">Lord Buddha Education Foundation</a>. All rights reserved.</span>
+                <span>
+          <a href="#">Privacy Policy</a> &nbsp;·&nbsp;
+          <a href="#">Terms of Use</a> &nbsp;·&nbsp;
+          <a href="#">Sitemap</a>
+        </span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================================
+       JAVASCRIPT
+  ============================================================ -->
+    <script>
+        /* ------ Navbar scroll behaviour ------ */
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 30);
+        }, {
+            passive: true
+        });
+
+        /* ------ Hamburger / mobile menu toggle ------ */
+        const hamburger = document.getElementById('hamburger');
+        const mobileNav = document.getElementById('mobileNav');
+        hamburger.addEventListener('click', () => {
+            const isOpen = hamburger.classList.toggle('open');
+            hamburger.setAttribute('aria-expanded', isOpen);
+            mobileNav.setAttribute('aria-hidden', !isOpen);
+            mobileNav.style.display = isOpen ? 'flex' : 'none';
+        });
+
+        /* Close mobile nav when a link is clicked */
+        mobileNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('open');
+                hamburger.setAttribute('aria-expanded', false);
+                mobileNav.setAttribute('aria-hidden', true);
+                mobileNav.style.display = 'none';
+            });
+        });
+
+        /* ------ Scroll reveal animation ------ */
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.12,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        /* ------ Active nav link highlight on scroll ------ */
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(link => {
+                        link.style.color = link.getAttribute('href') === '#' + entry.target.id ?
+                            'var(--blue)' : '';
+                    });
+                }
+            });
+        }, {
+            threshold: 0.35
+        });
+
+        sections.forEach(s => sectionObserver.observe(s));
+
+        /* ------ Form validation ------ */
+        const form = document.getElementById('scholarshipForm');
+        const formSuccess = document.getElementById('formSuccess');
+
+        function showError(fieldId, errId, show) {
+            const field = document.getElementById(fieldId);
+            const err = document.getElementById(errId);
+            if (show) {
+                field.classList.add('error');
+                err.classList.add('show');
+            } else {
+                field.classList.remove('error');
+                err.classList.remove('show');
+            }
+        }
+
+        function validateEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        function validatePhone(phone) {
+            return /^[\+\d\s\-\(\)]{7,15}$/.test(phone.trim());
+        }
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            let valid = true;
+
+            const firstName = document.getElementById('firstName').value.trim();
+            const lastName = document.getElementById('lastName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const program = document.getElementById('program').value;
+            const message = document.getElementById('message').value.trim();
+
+            showError('firstName', 'firstNameErr', !firstName);
+            if (!firstName) valid = false;
+
+            showError('lastName', 'lastNameErr', !lastName);
+            if (!lastName) valid = false;
+
+            showError('email', 'emailErr', !validateEmail(email));
+            if (!validateEmail(email)) valid = false;
+
+            showError('phone', 'phoneErr', !validatePhone(phone));
+            if (!validatePhone(phone)) valid = false;
+
+            showError('program', 'programErr', !program);
+            if (!program) valid = false;
+
+            showError('message', 'messageErr', !message);
+            if (!message) valid = false;
+
+            if (valid) {
+                // Simulate submission
+                form.style.display = 'none';
+                formSuccess.classList.add('show');
+            }
+        });
+
+        /* Clear errors on input */
+        ['firstName', 'lastName', 'email', 'phone', 'program', 'message'].forEach(id => {
+            const el = document.getElementById(id);
+            el.addEventListener('input', () => {
+                el.classList.remove('error');
+                document.getElementById(id + 'Err').classList.remove('show');
+            });
+        });
+    </script>
+</body>
+
+</html>
