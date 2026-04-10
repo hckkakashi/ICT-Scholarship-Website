@@ -276,20 +276,13 @@
             font-weight: 800;
             color: var(--ink);
         }
-        
-        .nav-logo .logo-badge {
-            width: 36px;
-            height: 36px;
-            border-radius: 10px;
-            background: var(--blue);
-            display: grid;
-            place-items: center;
-            font-size: .85rem;
-            color: #fff;
-            font-weight: 800;
-            letter-spacing: -.02em;
+
+        .nav-logo .logo-image {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
         }
-        
+
         .nav-links {
             display: flex;
             align-items: center;
@@ -960,16 +953,25 @@
         }
         
         .eligibility-wrap {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem;
-            align-items: start;
+            max-width: 900px;
+            margin: 0 auto;
         }
-        
+
         .eligibility-list {
-            display: flex;
-            flex-direction: column;
-            gap: .9rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            .eligibility-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .eligibility-cta {
+            text-align: center;
+            margin-top: 3rem;
         }
         
         .eligibility-item {
@@ -1429,19 +1431,13 @@
             color: var(--white);
             margin-bottom: 1rem;
         }
-        
-        .footer-logo .logo-badge {
-            width: 32px;
-            height: 32px;
-            border-radius: 8px;
-            background: var(--blue);
-            display: grid;
-            place-items: center;
-            font-size: .78rem;
-            font-weight: 800;
-            color: #fff;
+
+        .footer-logo .logo-image {
+            height: 36px;
+            width: auto;
+            object-fit: contain;
         }
-        
+
         .footer-brand p {
             font-size: .88rem;
             line-height: 1.7;
@@ -1602,8 +1598,7 @@
         <div class="container">
             <div class="nav-inner">
                 <a href="#hero" class="nav-logo" aria-label="LBEF Home">
-                    <div class="logo-badge" aria-hidden="true">LB</div>
-                    <span>LBEF</span>
+                    <img src="logo.png" alt="LBEF Logo" class="logo-image">
                 </a>
 
                 <ul class="nav-links" role="list">
@@ -1882,34 +1877,9 @@
                     </div>
                 </div>
 
-                <!-- Aside box -->
-                <div class="eligibility-aside reveal reveal-delay-2">
-                    <div class="aside-title">📅 Important Dates</div>
-                    <div class="deadline-item">
-                        <span class="d-label">Applications Open</span>
-                        <span class="d-value blue">Jan 15, 2025</span>
-                    </div>
-                    <div class="deadline-item">
-                        <span class="d-label">Application Deadline</span>
-                        <span class="d-value">Mar 31, 2025</span>
-                    </div>
-                    <div class="deadline-item">
-                        <span class="d-label">Entrance Test</span>
-                        <span class="d-value">Apr 10, 2025</span>
-                    </div>
-                    <div class="deadline-item">
-                        <span class="d-label">Interviews</span>
-                        <span class="d-value">Apr 15–20, 2025</span>
-                    </div>
-                    <div class="deadline-item">
-                        <span class="d-label">Results Announced</span>
-                        <span class="d-value blue">May 1, 2025</span>
-                    </div>
-                    <div class="deadline-item">
-                        <span class="d-label">Program Starts</span>
-                        <span class="d-value">Aug 1, 2025</span>
-                    </div>
-                    <a href="#contact" class="btn btn-primary">Apply Before Deadline <i class="fa-solid fa-arrow-right"></i></a>
+                <!-- CTA -->
+                <div class="eligibility-cta reveal reveal-delay-2">
+                    <a href="#contact" class="btn btn-primary">Check Your Eligibility & Apply <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
@@ -2133,8 +2103,7 @@
                 <!-- Brand -->
                 <div class="footer-brand">
                     <div class="footer-logo">
-                        <div class="logo-badge" aria-hidden="true">LB</div>
-                        LBEF
+                        <img src="logo.png" alt="LBEF Logo" class="logo-image">
                     </div>
                     <p>Lord Buddha Education Foundation — pioneering ICT education in Nepal since 2001. Empowering students to lead the digital future.</p>
                     <div class="social-links" aria-label="Social media links">
